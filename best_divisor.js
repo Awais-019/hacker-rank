@@ -1,11 +1,17 @@
 function isPrime(n) {
-    var divisor = 2;
-    while (n >= 2) {
-        if (n % divisor == 0) {
+    if (n <= 1) {
+        return false;
+    }
+    if (n <= 3) {
+        return true;
+    }
+    if (n % 2 == 0 || n % 3 == 0) {
+        return false;
+    }
+    for (var i = 5; i * i <= n; i = i + 6) {
+        if (n % i == 0 || n % (i + 2) == 0) {
             return false;
         }
-        n = n / divisor;
-        divisor++;
     }
     return true;
 }
@@ -41,4 +47,5 @@ function bestDivisor(n) {
     }
     return bestDivisor;
 }
-console.log(bestDivisor(12));
+console.log(isPrime(98901));
+console.log(bestDivisor(98901));
